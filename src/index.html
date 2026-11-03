@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'">
+<title>Cyberdeck Netscan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">CYBERDECK<span>//NETSCAN</span></div>
+  <div class="stat" id="stat">BEREIT</div>
+</header>
+<main>
+  <aside>
+    <h3>INTERFACES</h3>
+    <div id="ifaces"></div>
+    <h3>ZIEL</h3>
+    <input id="target" placeholder="192.168.1.0/24" spellcheck="false">
+    <label class="chk"><input type="checkbox" id="tcp" checked> Gründlich (TCP-Check, findet Geräte ohne Ping)</label>
+    <div class="row">
+      <button id="scan" class="primary">▶ SCAN</button>
+      <button id="stop">■ STOP</button>
+    </div>
+    <div class="bar"><div id="bar"></div></div>
+    <div id="progress" class="dim"></div>
+    <button id="export">⇩ CSV-EXPORT</button>
+    <p class="hint">Nur Netze scannen, für die du die Erlaubnis hast.</p>
+  </aside>
+  <section id="list">
+    <div class="tools"><input id="filter" placeholder="Filter: IP, Name, Hersteller …" spellcheck="false"><span id="count" class="dim"></span></div>
+    <table>
+      <thead><tr><th data-k="ip">IP</th><th data-k="name">HOSTNAME</th><th data-k="mac">MAC</th><th data-k="vendor">HERSTELLER</th><th data-k="ms">LATENZ</th></tr></thead>
+      <tbody id="hosts"></tbody>
+    </table>
+    <div id="empty" class="empty">Interface wählen oder Ziel eingeben, dann ▶ SCAN</div>
+  </section>
+  <section id="detail" class="hidden">
+    <div class="dhead"><div><div id="dip" class="big"></div><div id="dinfo" class="dim"></div></div><button id="dclose">✕</button></div>
+    <h3>PORTS</h3>
+    <div class="row">
+      <select id="pspec"><option value="top">Top-Ports (46)</option><option value="1-1024">1–1024</option><option value="1-65535">Alle (1–65535)</option><option value="custom">Eigene …</option></select>
+      <input id="pcustom" class="hidden" placeholder="22,80,443 oder 8000-8100">
+      <button id="pscan" class="primary">SCAN</button>
+    </div>
+    <table class="ports"><tbody id="ports"></tbody></table>
+    <h3>WERKZEUGE</h3>
+    <div class="row"><button id="ping">PING</button><button id="trace">TRACEROUTE</button><button id="sstop">■</button></div>
+    <pre id="console"></pre>
+  </section>
+</main>
+<script src="renderer.js"></script>
+</body>
+</html>

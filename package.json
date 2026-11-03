@@ -1,0 +1,76 @@
+{
+  "name": "cyberdeck-netscan",
+  "productName": "Cyberdeck Netscan",
+  "version": "0.1.0",
+  "description": "Netzwerk-Scanner im Cyberpunk-Stil: Geräte, Hersteller, Ports, Ping, Traceroute (Electron)",
+  "main": "src/main.js",
+  "author": "Cyberdeck Labs",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "oui": "node scripts/build-oui.js",
+    "test": "bash scripts/e2e.sh",
+    "dist:linux": "electron-builder --linux AppImage",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "electron": "^45.2.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "at.lea.cyberdeck.netscan",
+    "productName": "Cyberdeck Netscan",
+    "artifactName": "CyberdeckNetscan-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Network",
+      "icon": "build/icon.png",
+      "executableName": "cyberdeck-netscan",
+      "desktop": {
+        "entry": {
+          "StartupWMClass": "cyberdeck-netscan"
+        }
+      },
+      "syncDesktopName": true
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "shortcutName": "Cyberdeck Netscan"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "cyberdeck-labs",
+        "repo": "cyberdeck-netscan",
+        "releaseType": "release"
+      }
+    ],
+    "copyright": "Copyright © 2026 Cyberdeck Labs"
+  },
+  "desktopName": "cyberdeck-netscan.desktop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberdeck-labs/cyberdeck-netscan.git"
+  }
+}
