@@ -1,26 +1,26 @@
 # Cyberdeck Netscan
 
-Netzwerk-Scanner im Cyberpunk-Look – Teil der Cyberdeck-Reihe (Netrunner, Editor).
+Cyberpunk-styled network scanner – part of the Cyberdeck series (Netrunner, Editor).
 
 ![Icon](build/icon.png)
 
-## Funktionen
-- **Geräte im Netz finden:** Ping-Sweep über ein Netz (`192.168.1.0/24`), einen Bereich (`10.0.0.1-10.0.0.50`) oder eine einzelne IP
-- **Gründlich-Modus:** findet auch Geräte, die nicht auf Ping antworten (TCP-Check auf typische Ports)
-- **MAC-Adresse und Hersteller** (offline, IEEE-OUI-Liste), erkennt VMs (VirtualBox, VMware, Hyper-V, QEMU, Proxmox)
-- **Hostnamen** per Reverse-DNS
-- **Portscan:** Top-Ports mit Dienstnamen, 1–1024, alle oder eigene Liste; Banner (z. B. SSH-Version); Web-Dienste mit einem Klick öffnen
-- **Ping** und **Traceroute** live
-- **CSV-Export** (öffnet sich direkt in Excel/LibreOffice)
-- Auto-Update über GitHub-Releases, Linux (AppImage) und Windows
+## Features
+- **Find devices on the network:** ping sweep over a network (`192.168.1.0/24`), a range (`10.0.0.1-10.0.0.50`) or a single IP
+- **Thorough mode:** also finds devices that don't answer pings (TCP check on common ports)
+- **MAC address and vendor** (offline, IEEE OUI list), detects VMs (VirtualBox, VMware, Hyper-V, QEMU, Proxmox)
+- **Hostnames** via reverse DNS
+- **Port scan:** top ports with service names, 1–1024, all, or a custom list; banners (e.g. SSH version); open web services with one click
+- Live **ping** and **traceroute**
+- **CSV export** (opens directly in Excel/LibreOffice)
+- Auto-update via GitHub Releases, Linux (AppImage) and Windows
 
-## Hinweis
-Nur Netze scannen, für die du die Erlaubnis hast. Manche Geräte (z. B. NAS mit DoS-Schutz) sperren den Scanner nach einem Portscan kurz.
+## Note
+Only scan networks you are allowed to scan. Some devices (e.g. NAS with DoS protection) briefly block the scanner after a port scan.
 
-## Entwickeln
+## Development
 ```
 npm install
 npm start
-npm test          # End-to-End-Test (headless)
-npm run oui       # Herstellerliste neu laden
+npm test          # end-to-end test (headless)
+npm run oui       # refresh the vendor list
 ```
